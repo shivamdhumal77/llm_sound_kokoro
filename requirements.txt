@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+torch
+langchain-openai
+phonemizer
+transformers
+scipy
+munch
+requests
+espeak-ng  # For TTS phoneme generation

@@ -1,0 +1,21 @@
+version: '3.9'
+
+services:
+  voice_playback_app:
+    build:
+      context: .  # Build the Docker image from the current directory
+      dockerfile: Dockerfile  # Use the specified Dockerfile
+    ports:
+      - "8000:8000"  # Map the container's port 8000 to the host's port 8000
+    volumes:
+      - ./app:/app  # Map the local `app` directory to the container's `/app` directory
+    environment:
+      # Add any environment variables your app might need
+      PYTHONUNBUFFERED: 1
+      APP_ENV: development
+    deploy:
+      resources:
+        limits:
+          #cpus: "1.0"  # Limit the container to 1 CPU
+          #memory: 512M  # Limit the container to 512 MB of memory
+    command: ["uvicorn", "app.main_file:app", "--host", "0.0.0.0", "--port", "8000"]
