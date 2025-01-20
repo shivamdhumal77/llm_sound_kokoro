@@ -12,18 +12,24 @@ RUN apk add --no-cache \
     libffi-dev \
     openssl-dev \
     make \
-    espeak \ 
     espeak-ng \
     git \
     git-lfs \
     g++ \
-    libc-dev
+    libc-dev \
+    bash
 
 # Install Git LFS (Large File Storage) support
 RUN git lfs install
 
 # Set the working directory inside the container
 WORKDIR /app
+
+# Clone the repository and handle file setup
+RUN git clone https://huggingface.co/hexgrad/Kokoro-82M && \
+    cd Kokoro-82M && \
+    apk add --no-cache espeak-ng && \
+    pip install -q phonemizer torch transformers scipy munch
 
 # Copy the requirements.txt to the container
 COPY requirements.txt /app/
