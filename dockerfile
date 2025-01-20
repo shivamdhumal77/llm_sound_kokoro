@@ -12,7 +12,7 @@ RUN apk add --no-cache \
     libffi-dev \
     openssl-dev \
     make \
-    espeak-ng \
+    espeak \
     git \
     git-lfs \
     g++ \
