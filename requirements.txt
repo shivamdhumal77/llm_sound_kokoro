@@ -7,4 +7,4 @@ transformers
 scipy
 munch
 requests
-python-espeak # For TTS phoneme generation
+espeakng # For TTS phoneme generation
